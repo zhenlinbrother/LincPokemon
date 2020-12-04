@@ -1,0 +1,57 @@
+import com.linc.buildSrc.*
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.example.lincpokemon"
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation Kotlin.kotlin_stdlib
+    implementation AndroidX.core
+    implementation AndroidX.appcompat
+    implementation AndroidX.material
+    implementation AndroidX.constraintlayout
+    testImplementation AndroidX.junit
+    androidTestImplementation AndroidX.ext_junit
+    androidTestImplementation AndroidX.espresso_core
+    //Hilt
+    implementation Hilt.daggerRuntime
+    kapt Hilt.daggerCompiler
+    implementation Hilt.viewModule
+    kapt Hilt.compiler
+    //Retrofit
+    implementation Retrofit.runtime
+    implementation Retrofit.gson
+    implementation Retrofit.logging
+}
