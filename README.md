@@ -1,0 +1,2 @@
+# LincPokemon
+一个运用了JetPacks全家桶的模仿神奇宝贝的Android App
